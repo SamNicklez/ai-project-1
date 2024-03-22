@@ -2,6 +2,7 @@
 
 Welcome to our ML Project! This guide is designed to help you get started with Git and GitHub, enabling you to contribute to our project effectively.
 
+Link to our dataset [here](https://www.kaggle.com/datasets/jacksondivakarr/student-classification-dataset?select=student.csv)
 ## Setting Up
 
 Before you can work on the project, you need to have Git installed on your computer and be able to access our GitHub repository.
