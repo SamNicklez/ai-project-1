@@ -119,7 +119,7 @@ To ensure VSCode uses the correct Python interpreter:
 Our project may require additional Python packages. You can install them using `pip`, Python's package installer.
 
 1. Open your terminal or command prompt.
-2. Navigate to the project folder.
+2. Navigate to the project folder (make sure you are in /src in the terminal).
 3. Run the following command to install all required packages:
 
 ```sh
