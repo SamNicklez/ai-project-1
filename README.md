@@ -1,134 +1,89 @@
-# ML Project 1 README
+# Student Grade Prediction Model
 
-Welcome to our ML Project! This guide is designed to help you get started with Git and GitHub, enabling you to contribute to our project effectively.
+## Authors:
+- Samuel Nicklaus
+- Jakob Kindle
+- Lane Swartzendruber
+- Alejandro Mirafuentes
 
-Link to our dataset [here](https://www.kaggle.com/datasets/jacksondivakarr/student-classification-dataset?select=student.csv)
-## Setting Up
+# Introduction
 
-Before you can work on the project, you need to have Git installed on your computer and be able to access our GitHub repository.
+In this project, our team focuses on predicting a student's academic performance based on various personal, academic, and social factors using **classification**. We aim to classify students into different grade categories based on inputs such as age, sex, high school type, participation in extracurricular activities, and more. Note that we originally attempted to categorize by every grade, but for a number of reasons this made the accuracy low (Quality of Data, Number of data entries, etc). If you want to run the code with different groupings you can edit the 'grade_mapping' variable in the Data Description code cell.
 
-### 1. Installing Git
+*Data Source*: [Here](https://www.kaggle.com/datasets/jacksondivakarr/student-classification-dataset?select=student.csv)
 
-If you haven't already, download and install Git from [https://git-scm.com/downloads](https://git-scm.com/downloads). Follow the installation instructions for your operating system.
+*Data Source Description (Via Kaggle):*
 
-### 2. Cloning the Repository
+This dataset encompasses various aspects related to student performance. Each entry is uniquely identified by an 'Id'. The dataset includes demographic information such as 'Student_Age' and 'Sex'. 'High_School_Type' categorizes the type of high school attended, while 'Scholarship' indicates whether the student has a scholarship. Details about 'Additional_Work' and involvement in 'Sports_activity' provide insights into extracurricular commitments.
 
-To work on the project, you'll need to have a local copy of our code on your machine. This process is called "cloning" the repository.
+'Transportation' outlines the mode of commuting for each student. Academic aspects are captured through 'Weekly_Study_Hours', 'Attendance', and evaluations of 'Reading', 'Notes', and 'Listening_in_Class'. The culmination of these factors is reflected in the 'Grade' column, providing a comprehensive overview of student performance. This dataset serves as a valuable resource for exploring the multifaceted dynamics influencing academic outcomes.
 
-1. Open your terminal or command prompt.
-2. Navigate to the folder where you want to store the project.
-3. Run the following command:
+# Data Description
 
-```sh
-git clone https://github.com/SamNicklez/ml-project-1.git
-```
+- Student_Age: The age of the student.
+- Sex: The gender of the student (e.g., Male, Female).
+- High_School_Type: The type of high school the student attended (e.g., State, Private, Other).
+- Scholarship: Whether the student has a scholarship (Yes/No).
+- Additional_Work: Whether the student does additional work apart from regular studies (Yes/No).
+- Sports_activity: Participation in sports activities (Yes/No).
+- Transport: Mode of transportation used by the student (e.g., Car, Bike, Public Transport).
+- Weekly_Study_Hours: Number of hours the student studies per week.
+- Attendance: The attendance percentage of the student.
+- Reading: A score evaluating the student’s reading habits.
+- Notes: A score evaluating the quality of the student's notes.
+- Listening_in_Class: A score evaluating how well the student listens in class.
+- Grade: The final grade of the student (e.g., A, B, C, D, F).
 
-4. Enter your GitHub credentials if prompted.
+# Methodology
 
-You now have a local copy of the project! Navigate into the project folder with `cd ml-project-1` to start working.
+### Data Preparation and Cleaning
 
-## Making Changes
+- Loaded the dataset using Pandas.
+- Checked for null values and handled them appropriately.
+- Performed encoding of categorical variables.
+- Split the dataset into training and testing sets.
 
-After you've made changes to the project (like adding a new feature or fixing a bug), you'll want to save these changes and share them with the team. Here's how:
+### Model Selection
 
-### 1. Pulling Latest Changes
+We used the following machine learning models for classification:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- K-Nearest Neighbors (KNN)
+- Support Vector Machine (SVM)
 
-Before making any changes, it's a good practice to pull the latest changes from GitHub to ensure your local copy is up-to-date.
+### Model Evaluation
 
-```sh
-git pull origin main
-```
+- Used cross-validation to evaluate the models.
+- Selected the best model based on accuracy score.
+- Tuned the hyperparameters to improve the model performance.
 
-### 2. Creating a New Branch
+# Feature Selection
 
-It's recommended to create a new branch for your changes. This keeps the project organized and makes it easier to review and merge contributions.
+Selected features based on their importance and correlation with the target variable (Grade). The features used were:
+- Student_Age
+- High_School_Type
+- Additional_Work
+- Weekly_Study_Hours
+- Attendance
+- Reading
+- Notes
 
-```sh
-git checkout -b <your-branch-name>
-```
+# Results
 
-Replace `<your-branch-name>` with a descriptive name for your branch (e.g., `lanes-branch`).
+The best model achieved an accuracy score of 0.6087 on the test set. The Random Forest model with 10 estimators was selected as the best model. The most important features identified were:
+- High_School_Type_Private
+- High_School_Type_State
+- High_School_Type_Other
+- Additional_Work
+- Reading
+- Notes
+- Student_Age
 
-### 3. Committing Changes
+# Conclusion
 
-After you've made changes, you need to "commit" them. This saves a snapshot of your changes.
+While the accuracy result was not as high as expected, it reflects the quality and nature of the dataset. Future improvements could involve using a more comprehensive dataset and applying more sophisticated feature engineering techniques. The project provided valuable experience in end-to-end machine learning model development.
 
-1. Add the files you've changed to the commit:
+# Disclosures
 
-```sh
-git add .
-```
-
-The `.` adds all changed files. If you want to add specific files, replace `.` with the file names.
-
-2. Commit the changes with a message describing what you've done:
-
-```sh
-git commit -m "Your descriptive commit message here"
-```
-
-### 4. Pushing Changes
-
-To share your changes with the team, you need to "push" your branch to GitHub.
-
-```sh
-git push origin <your-branch-name>
-```
-
-Replace `<your-branch-name>` with the name of your branch.
-
-## Contributing
-
-After pushing your changes, go to the [GitHub repository](https://github.com/SamNicklez/ml-project-1) and create a pull request from your branch. This will notify team members to review your changes to the code. After a review, your changes can be merged into the main project.
-
-Certainly! Expanding the README to include setup instructions for Python and Visual Studio Code (VSCode) will make it easier for your team to get started. Below, I've added sections on setting up Python and VSCode to the README.
-
----
-
-### Installing Python
-
-Our project requires Python. Here's how you can install it:
-
-1. **Download Python:** Go to the official Python website at [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the latest version of Python for your operating system.
-
-2. **Install Python:** Open the downloaded file and follow the installation instructions. Make sure to check the box that says "Add Python to PATH" during installation.
-
-3. **Verify Installation:** Open your terminal or command prompt and type `python --version`. You should see the Python version number if the installation was successful.
-
-### Setting Up Visual Studio Code (VSCode)
-
-VSCode is a popular, lightweight code editor that supports Python development and many other programming languages.
-
-1. **Download VSCode:** Visit the official Visual Studio Code website at [https://code.visualstudio.com/](https://code.visualstudio.com/) and download the version for your operating system.
-
-2. **Install VSCode:** Open the downloaded file and follow the installation instructions.
-
-3. **Install Python Extension for VSCode:** Launch VSCode, go to the Extensions view by clicking on the square icon on the sidebar or pressing `Ctrl+Shift+X`. Search for "Python" and install the extension by Microsoft.
-
-4. **Open the Project in VSCode:** Open VSCode, go to File > Open Folder, and select the folder where you cloned the GitHub repository.
-
-### Configuring Python in VSCode
-
-To ensure VSCode uses the correct Python interpreter:
-
-1. Open the command palette with `Ctrl+Shift+P` or `Cmd+Shift+P` on macOS.
-2. Type "Python: Select Interpreter" and select it.
-3. Choose the Python interpreter you installed earlier. If you have multiple versions of Python installed, select the one you plan to use for this project.
-
-### Installing Required Python Packages
-
-Our project may require additional Python packages. You can install them using `pip`, Python's package installer.
-
-1. Open your terminal or command prompt.
-2. Navigate to the project folder (make sure you are in /src in the terminal).
-3. Run the following command to install all required packages:
-
-```sh
-pip install -r requirements.txt
-```
-
-The `requirements.txt` file contains a list of all packages needed for the project. If you add a new package, make sure to update this file.
-
-## Need Help?
-
-If you're stuck or have questions, feel free to ask me (Sam). Happy coding!
+The use of ChatGPT was used to help make guided decisions, such as methods to clean the dataset, as well as methods to test many different feature combinations against one model (this was before we learned how to do it in lecture).
